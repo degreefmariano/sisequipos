@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
 
 class LoginController extends Controller
 {
@@ -52,10 +52,11 @@ class LoginController extends Controller
 
         if (Auth::validate($credentials)) {
             $user = Auth::getLastAttempted();
-            /* Aquí es donde verificas que esté activo el usuario, asumiendo que 
+            /* Aquí es donde verificas que esté activo el usuario, asumiendo que
            tengas un campo booleano active */
             if ($user->active) {
                 Auth::login($user, $request->has('remember'));
+
                 return redirect()->intended($this->redirectTo);
             } else {
                 return redirect(route('login'))

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use DB;
+use Illuminate\Http\Request;
 
 class ConsultaController extends Controller
 {
@@ -21,15 +21,16 @@ class ConsultaController extends Controller
 
             $a = (count($equipos));
             if ($a >= 0) {
-                return view("fechasequiporesultadofinal", [
-                    "equipos" => $equipos,
-                    "f1" => $f1,
-                    "f2" => $f2,
-                    "a" => $a
+                return view('fechasequiporesultadofinal', [
+                    'equipos' => $equipos,
+                    'f1' => $f1,
+                    'f2' => $f2,
+                    'a' => $a,
                 ]);
             } else {
                 return view('fechasequipo', compact('equipos'));
             }
+
             return view('fechasequipo', compact('equipos'));
         } else {
             return view('fechasequipo', compact('equipos'));
@@ -49,15 +50,16 @@ class ConsultaController extends Controller
 
             $a = (count($servicios));
             if ($a >= 0) {
-                return view("fechasservicioresultadofinal", [
-                    "servicios" => $servicios,
-                    "f1" => $f1,
-                    "f2" => $f2,
-                    "a" => $a
+                return view('fechasservicioresultadofinal', [
+                    'servicios' => $servicios,
+                    'f1' => $f1,
+                    'f2' => $f2,
+                    'a' => $a,
                 ]);
             } else {
                 return view('fechasservicio', compact('servicios'));
             }
+
             return view('fechasservicio', compact('servicios'));
         } else {
             return view('fechasservicio', compact('servicios'));
@@ -77,37 +79,32 @@ class ConsultaController extends Controller
 
             $total = (count($servicios));
             if ($total >= 0) {
-                return view("estadisticasresultadofinal", 
-                [
-                    "servicios" => $servicios, 
-                    "total" => $total,
-                    "desde" => $desde,
-                    "hasta" => $hasta
-                ]);
+                return view('estadisticasresultadofinal',
+                    [
+                        'servicios' => $servicios,
+                        'total' => $total,
+                        'desde' => $desde,
+                        'hasta' => $hasta,
+                    ]);
             } else {
                 return view('estadisticas', compact('servicios'));
             }
+
             return view('estadisticas', compact('servicios'));
         } else {
             return view('estadisticas', compact('servicios'));
         }
     }
 
-    public function estadisticas2(Request $request)
+    public function estadisticaspdf(Request $request)
     {
-        $año = $request->año;
-        return view('estadisticasresultadofinal2', ["año" => $año]);
-    }
-
-    public function estadisticaspdf(Request $request) 
-    {
-        $fechaDesde = "2023-08-01";
-        $fechaHasta = "2023-08-31";
+        $fechaDesde = '2023-08-01';
+        $fechaHasta = '2023-08-31';
         $total = 12345;
-        
-        $fechaDesdeFormateada = date("d-m-Y", strtotime($fechaDesde));
-        $fechaHastaFormateada = date("d-m-Y", strtotime($fechaHasta));
-        
+
+        $fechaDesdeFormateada = date('d-m-Y', strtotime($fechaDesde));
+        $fechaHastaFormateada = date('d-m-Y', strtotime($fechaHasta));
+
         $pdf = PDF::loadView('estadisticaspdf', [
             'fechaDesde' => $fechaDesdeFormateada,
             'fechaHasta' => $fechaHastaFormateada,
@@ -116,5 +113,4 @@ class ConsultaController extends Controller
         $pdf->setPaper('A4', 'portrait');
         $pdf->save('mi-informe.pdf');
     }
-
 }

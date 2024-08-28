@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empleado extends Model
 {
-    protected $table    = 'empleados';
+    protected $table = 'empleados';
 
     public $timestamps = false;
 
@@ -15,7 +15,7 @@ class Empleado extends Model
     protected $fillable = [
         'jerarquia',
         'ni',
-        'apeynom'
+        'apeynom',
 
     ];
 

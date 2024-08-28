@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
-use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -45,23 +45,23 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Throwable $exception)
-    { 
-      /*  if ($this->isHttpException($exception)) {
-           
-            // ver is andan los mensajes de error !!!!!!!!!!!!!!
-            if ($exception->getStatusCode() == 403) {
-                return response()->view('errors.' . '403', [], 403);
-            }
+    {
+        /*  if ($this->isHttpException($exception)) {
 
-            if ($exception->getStatusCode() == 404) {
-                return response()->view('errors.' . '404', [], 404);
-            }
-             
-            if ($exception->getStatusCode() == 419) {
-                return response()->view('errors.' . '419', [], 419);
-            }
-        }*/
-     
+              // ver is andan los mensajes de error !!!!!!!!!!!!!!
+              if ($exception->getStatusCode() == 403) {
+                  return response()->view('errors.' . '403', [], 403);
+              }
+
+              if ($exception->getStatusCode() == 404) {
+                  return response()->view('errors.' . '404', [], 404);
+              }
+
+              if ($exception->getStatusCode() == 419) {
+                  return response()->view('errors.' . '419', [], 419);
+              }
+          }*/
+
         return parent::render($request, $exception);
     }
 }

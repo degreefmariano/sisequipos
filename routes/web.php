@@ -11,8 +11,8 @@
 |
 
 */
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpensesController;
+use Illuminate\Support\Facades\Route;
 
 //VISTA PRINCIPAL
 Route::get('/', function () {
@@ -58,10 +58,7 @@ Route::get('/download', 'UsersController@download');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 // Route::get('expenses', [ExpensesController::class, 'index'])->name('expenses.index');
-
-
 
 //EQUIPOS
 Route::resource('equipo', 'EquiposController');
@@ -109,11 +106,7 @@ Route::get('/estadisticasresultadofinal', function () {
     return view('/estadisticasresultadofinal');
 });
 
-//estadisticas2
-Route::get('estadisticasresultadofinal2', 'ExpensesController@index')->name('estadisticas');
-
 // Route::get('expenses', [ExpensesController::class, 'index'])->name('expenses.index');
-
 
 Route::match(['get', 'post'], 'admin/createadmin', 'AdminController@createAdmin');
 Route::get('admin', 'AdminController@admin');
@@ -121,7 +114,7 @@ Route::get('admin', 'AdminController@admin');
 //Protejemos las rutas. Agregamos un middleware a la ruta con dos restricciones.
 // La primera asegura que el usuario debe estar registrado para acceder.
 //La segunda condición es que el usuario tenga rol de administrador.
-Route::put('post/{id}', function ($id) { })->middleware('auth', 'role:admin');
+Route::put('post/{id}', function ($id) {})->middleware('auth', 'role:admin');
 
 Route::get('user/password', 'UsersController@password');
 Route::post('user/updatepassword', 'UsersController@updatepassword');

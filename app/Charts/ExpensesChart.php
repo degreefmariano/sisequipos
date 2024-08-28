@@ -50,7 +50,7 @@ class ExpensesChart
         $eqNov = Equipo::whereYear('fecha_alta', $año)->whereMonth('fecha_alta', 11)->count();
         $eqDic = Equipo::whereYear('fecha_alta', $año)->whereMonth('fecha_alta', 12)->count();
         //dd($eqEne, $eqFeb, $eqMar, $eqAbr, $eqMay, $eqJun, $eqJul, $eqAgo, $eqSep, $eqOct, $eqNov, $eqDic);
-        $eq = $eqEne+$eqFeb+$eqMar+$eqAbr+$eqMay+$eqJun+$eqJul+$eqAgo+$eqSep+$eqOct+$eqNov+$eqDic;
+        $eq = $eqEne + $eqFeb + $eqMar + $eqAbr + $eqMay + $eqJun + $eqJul + $eqAgo + $eqSep + $eqOct + $eqNov + $eqDic;
 
         $seEne = Servicio::whereYear('fecha_ingreso', $año)->whereMonth('fecha_ingreso', 1)->count();
         $seFeb = Servicio::whereYear('fecha_ingreso', $año)->whereMonth('fecha_ingreso', 2)->count();
@@ -65,13 +65,12 @@ class ExpensesChart
         $seNov = Servicio::whereYear('fecha_ingreso', $año)->whereMonth('fecha_ingreso', 11)->count();
         $seDic = Servicio::whereYear('fecha_ingreso', $año)->whereMonth('fecha_ingreso', 12)->count();
         //dd($seEne, $seFeb, $seMar, $seAbr, $seMay, $seJun, $seJul, $seAgo, $seSep, $seOct, $seNov, $seDic);
-        $se = $seEne+$seFeb+$seMar+$seAbr+$seMay+$seJun+$seJul+$seAgo+$seSep+$seOct+$seNov+$seDic;
-       
+        $se = $seEne + $seFeb + $seMar + $seAbr + $seMay + $seJun + $seJul + $seAgo + $seSep + $seOct + $seNov + $seDic;
 
         return $this->chart->barChart()
-            ->setTitle('En el año: '.$año. ', ingresaron la cantidad de ' .$eq. ' equipos y '. $se. ' servicios')
+            ->setTitle('En el año: '.$año.', ingresaron la cantidad de '.$eq.' equipos y '.$se.' servicios')
             // ->setSubtitle('Año 2023')
-            ->addData('Equipos',   [$eqEne, $eqFeb, $eqMar, $eqAbr, $eqMay, $eqJun, $eqJul, $eqAgo, $eqSep, $eqOct, $eqNov, $eqDic])
+            ->addData('Equipos', [$eqEne, $eqFeb, $eqMar, $eqAbr, $eqMay, $eqJun, $eqJul, $eqAgo, $eqSep, $eqOct, $eqNov, $eqDic])
             ->addData('Servicios', [$seEne, $seFeb, $seMar, $seAbr, $seMay, $seJun, $seJul, $seAgo, $seSep, $seOct, $seNov, $seDic])
             ->setXAxis(['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']);
     }

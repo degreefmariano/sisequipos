@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CrearTablaEquipos extends Migration
 {
@@ -21,12 +21,12 @@ class CrearTablaEquipos extends Migration
             $table->string('marca');
             $table->string('unidad_destino');
             $table->string('subunidad_destino');
-            $table->string('telefono');    
+            $table->string('telefono');
             $table->string('personal_dip');
             $table->string('observaciones');
-            $table->string('estado_equipo');         
+            $table->string('estado_equipo');
             $table->timestamps();
-        });        
+        });
     }
 
     /**

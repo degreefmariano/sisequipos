@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Servicio extends Model
 {
-    protected $table    = 'servicios';
+    protected $table = 'servicios';
 
     public $timestamps = false;
 
@@ -23,7 +23,7 @@ class Servicio extends Model
         'personal_div_entrega',
         'observacion_retira',
         'estado_servicio',
-        'marca_editar'
+        'marca_editar',
     ];
 
     public function scopeBuscarid($query, $id)

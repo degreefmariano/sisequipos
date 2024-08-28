@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipo extends Model
 {
-    protected $table    = 'equipos';
+    protected $table = 'equipos';
 
     public $timestamps = false;
 
@@ -21,7 +21,7 @@ class Equipo extends Model
         'ip',
         'personal_dip',
         'observaciones',
-        'estado_equipo'
+        'estado_equipo',
     ];
 
     public function scopeBuscarid($query, $id)

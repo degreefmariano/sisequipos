@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Dependencia;
+use Illuminate\Http\Request;
 
 class DependenciasController extends Controller
 {
@@ -18,6 +18,7 @@ class DependenciasController extends Controller
         $dependencias->each(function ($dependencias) {
             $dependencias->nro;
         });
+
         return view('Dependencia.index')
             ->with('dependencias', $dependencias);
     }
@@ -29,8 +30,8 @@ class DependenciasController extends Controller
 
     public function store(Request $request)
     {
-        $dependencia         = new Dependencia;
-        $dependencia->nro    = $request->nro;
+        $dependencia = new Dependencia;
+        $dependencia->nro = $request->nro;
         $dependencia->nombre = $request->nombre;
 
         $dependencia->save();
@@ -41,34 +42,39 @@ class DependenciasController extends Controller
     public function show($nro)
     {
         $dependencias = Dependencia::find($nro);
+
         return view('dependencia.show', compact('dependencias'));
     }
 
     public function edit($nro)
     {
         $dependencia = Dependencia::find($nro);
+
         return view('dependencia.edit', compact('dependencia'));
     }
 
     public function update(Request $request, $nro)
     {
         $this->validate($request, [
-            'nro'    => 'required',
+            'nro' => 'required',
             'nombre' => 'required',
         ]);
         dependencia::find($nro)->update($request->all());
+
         return redirect()->route('dependencia.index')->with('success', 'Registro actualizado');
     }
 
     public function destroy($id)
     {
         Dependencia::find($id)->delete();
+
         return redirect()->route('dependencia.index')->with('success', 'Registro eliminado satisfactoriamente');
     }
 
     public function getDependencias()
     {
         $dependencias = Dependencia::all();
+
         return response()->json($dependencias);
     }
 }

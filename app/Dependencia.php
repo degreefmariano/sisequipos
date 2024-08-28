@@ -12,7 +12,7 @@ class Dependencia extends Model
 
     protected $fillable = [
         'nro',
-        'nombre'
+        'nombre',
     ];
 
     public function scopeSearch($query, $nro)
